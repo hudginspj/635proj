@@ -1,28 +1,30 @@
 import sklearn
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
+import csvToExamples
 import csv
-xsArr = []
-ysArr = []
-with open('../features/pred-seq-34702.out', 'r') as csvfile:
-    csvfile.readline() # Ignore first line
-    reader = csv.reader(csvfile, delimiter=',',)
-    for row in reader:
-        xsArr.append(row[1:-1])
-        ysArr.append(row[-1])
+from sklearn.model_selection import cross_val_score
+# xsArr = []
+# ysArr = []
+# with open('../features/pred-seq-34702.out', 'r') as csvfile:
+#     csvfile.readline() # Ignore first line
+#     reader = csv.reader(csvfile, delimiter=',',)
+#     for row in reader:
+#         # print(len(row))
+#         xsArr.append(row[1:-1])
+#         ysArr.append(row[-1])
 
 
-X = np.array(xsArr)
-Y = np.array(ysArr)
+# X = np.array(xsArr)
+# Y = np.array(ysArr)
 
+(xs, ys) = csvToExamples.xsAndYs('../features/pred-seq-34702.out')
 
 clf = RandomForestClassifier()
-clf.fit(X[:100], Y[:100])
-pred = clf.predict(X[-10:])
+# clf.fit(xs[:-10], ys[:-10])
+# pred = clf.predict(xs[-10:])
+# print(pred)
+# print(ys[-10:])
 
-# f = open('../features/seq-34702.out')
-# f.readline()  # skip the header
-# data = np.loadtxt(f, delimiter=',')
-# X = data[:, 1:]  # select columns 1 through end
-# y = data[:, 0]   # select column 0, the stock price
-# print(y)
+scores = cross_val_score(clf, xs, ys, cv=5)
+print(scores)
