@@ -1,4 +1,4 @@
-FEATURES_FILENAME = 'seq-34702.out'
+FEATURES_FILENAME = 'nikki_features.csv'
 
 def ignoreFirst(commaSeperatedLine):
     return ','.join(commaSeperatedLine.split(',')[1:])
