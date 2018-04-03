@@ -12,9 +12,31 @@
 
 import csv
 
+
+# with open(filename, 'r') as csvfile:
+#         csvfile.readline() # Ignore first line
+#         reader = csv.reader(csvfile, delimiter=',',)
+#         for row in reader:
 with open('635_Prot.txt', 'r') as in_file:
-    stripped = (line.strip() for line in in_file)
-    lines = (line.split(",") for line in stripped if line)
-    with open('log.csv', 'w') as out_file:
-        writer = csv.writer(out_file)
-        writer.writerows(lines)
+    with open('../features/nikki_features.csv', 'w') as out_file:
+        for line in in_file:
+            string_values = line.strip().split()
+            row = []
+            for string_value in string_values:
+                row.append(string_value.replace(",", ""))
+            newLine = ",".join(row)
+            out_file.write(newLine + "\n")
+        
+
+#     stripped = (line.strip() for line in in_file)
+#     lines = (line.split(",") for line in stripped if line)
+#     with open('log.csv', 'w') as out_file:
+#         writer = csv.writer(out_file)
+#         writer.writerows(lines)
+
+# with open('635_Prot.txt', 'r') as in_file:
+#     stripped = (line.strip() for line in in_file)
+#     lines = (line.split(",") for line in stripped if line)
+#     with open('log.csv', 'w') as out_file:
+#         writer = csv.writer(out_file)
+#         writer.writerows(lines)
