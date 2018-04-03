@@ -1,21 +1,20 @@
-import textwrap
-# print("hello")
-with open('../spec/sequences_training.txt') as seq_file:
-    with open('strip_seqs.txt', 'w') as out_file:
-        with open('635.fasta', 'w') as fasta_file:
-            counter = 0
-            for line in seq_file.readlines():
-                if counter >= 999:
-                    break
-                seq = line.split(',')[0]
-                print(line)
-                # print(seq)
-                # print("---")
-                out_file.write(f"{seq}\n")
-                fasta_file.write(f">seq{counter}\n")
-                fasta_file.write(textwrap.fill(seq, width=100))
-                fasta_file.write("\n")
-                counter += 1
+FEATURES_FILENAME = 'seq-34702.out'
+
+def ignoreFirst(commaSeperatedLine):
+    return ','.join(commaSeperatedLine.split(',')[1:])
+
+with open('../spec/sequences_training.txt') as original:
+    with open('../features/' + FEATURES_FILENAME) as features:
+        with open('../features/pred-' + FEATURES_FILENAME, 'w') as out_file:
+            original_lines = original.readlines()
+            features_lines = features.readlines()
+            out_file.write(ignoreFirst(features_lines[0].strip()) + ",class\n")
+            for i in range(1, len(features_lines)):
+                prot_class = original_lines[i].strip().split(',')[1]
+                feats = features_lines[i].strip()
+                feats = ignoreFirst(feats) #Uncomment this line to ignore the first "feature" (seqn)
+                out_file.write(feats + ', ' + prot_class + '\n')
+
 
 
 
