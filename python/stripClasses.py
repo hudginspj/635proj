@@ -1,8 +1,8 @@
 import textwrap
 # print("hello")
 with open('../spec/sequences_training.txt') as seq_file:
-    with open('strip_seqs.txt', 'w') as out_file:
-        with open('635.fasta', 'w') as fasta_file:
+    with open('../sequences/strip_seqs.txt', 'w') as out_file:
+        with open('../sequences/635.fasta', 'w') as fasta_file:
             counter = 0
             for line in seq_file.readlines():
                 if counter >= 999:
