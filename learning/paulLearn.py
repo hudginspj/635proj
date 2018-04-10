@@ -29,19 +29,22 @@ def avgMcc(clf, xs, ys):
 def learnOn(filename):
     (xs, ys) = csvToExamples.xsAndYs(filename)
 
+
     clf = RandomForestClassifier()
     # clf.fit(xs[:-10], ys[:-10])
     # pred = clf.predict(xs[-10:])
     # print(pred)
     # print(ys[-10:])
 
-    scores = cross_val_score(clf, xs, ys, cv=10, scoring=avgMcc)
+    scores = cross_val_score(clf, xs, ys, cv=5, scoring=avgMcc)
+    # scores = cross_val_score(clf, xs, ys, cv=5, scoring=None)
     print(filename)
     print(scores)
     print(np.mean(scores))
     
 
 if __name__ == "__main__":
-    learnOn('../features/pred-seq-34702.out')
+    # learnOn('./features/pred-seq-34702.out')
+    learnOn('./training_data/pred-profeat.csv')
     # learnOn('../features/pred-ProtrWeb-aac.csv')
     # learnOn('../features/pred-nikki_features.csv')
