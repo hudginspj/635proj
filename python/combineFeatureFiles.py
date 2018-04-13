@@ -9,7 +9,7 @@ files.remove('test')
 #print(files)
 
 with open('./features/fa_feat_ProtrWeb.csv', 'w') as out_file:
-    for i, fileName in enumerate(files):python python/
+    for i, fileName in enumerate(files)
 
         tk_path = path.join(files_path, fileName)
         print("Loading %s " % tk_path)
