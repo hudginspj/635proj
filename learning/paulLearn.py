@@ -31,10 +31,20 @@ def learnOn(filename):
 
 
     clf = RandomForestClassifier()
+
+
     # clf.fit(xs[:-10], ys[:-10])
     # pred = clf.predict(xs[-10:])
     # print(pred)
     # print(ys[-10:])
+    # importances = clf.feature_importances_
+    # features = csvToExamples.feature_list(filename)
+    # # print(importances)
+    # for i in range(len(importances)):
+    #     if importances[i] > 0.006:
+    #         print(features[i], importances[i])
+
+
 
     scores = cross_val_score(clf, xs, ys, cv=5, scoring=avgMcc)
     # scores = cross_val_score(clf, xs, ys, cv=5, scoring=None)
@@ -46,5 +56,5 @@ def learnOn(filename):
 if __name__ == "__main__":
     # learnOn('./features/pred-seq-34702.out')
     learnOn('./training_data/pred-profeat.csv')
-    # learnOn('../features/pred-ProtrWeb-aac.csv')
-    # learnOn('../features/pred-nikki_features.csv')
+    # learnOn('./features/pred-ProtrWeb-aac.csv')
+    #learnOn('./features/pred-nikki_features.csv')
