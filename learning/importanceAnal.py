@@ -28,6 +28,7 @@ importances = pickle.load(file)
 file.close()
 
 features = csvToExamples.feature_list('./features/pred-fa_feat_ProtrWeb.csv')
+features = csvToExamples.feature_list('./training_data/all_features.csv')
 
 print(importances)
 
@@ -35,7 +36,8 @@ selected = []
 for i in range(len(importances)):
     # print(importances[i])
     # condition = importances[i] > 0.0005 and len(features[i]) == 3
-    condition = importances[i] > 0.001
+    # condition = importances[i] > 0.0005
+    condition = importances[i] > 0.0009 and not features[i].startswith("[G1") and not features[i].startswith(" [G1") and not features[i].startswith("[G2")
     if condition:
         print(features[i], importances[i])
         selected.append(features[i])

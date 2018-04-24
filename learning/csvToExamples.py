@@ -23,7 +23,7 @@ def xsAndYs(filename):
     xs = np.array(xsArr)
     ys = np.array(ysArr)
 
-    print(xs.shape)
+    print("xs shape: ", xs.shape)
     drnaCount = 0
     for y in ys:
         if y == " DRNA":
