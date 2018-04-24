@@ -1,5 +1,3 @@
-
-
 import numpy as np
 import csv
 
@@ -24,7 +22,13 @@ def xsAndYs(filename):
             last_row = row
     xs = np.array(xsArr)
     ys = np.array(ysArr)
+
     print(xs.shape)
+    drnaCount = 0
+    for y in ys:
+        if y == " DRNA":
+            drnaCount += 1
+    print("DRNA count: ", drnaCount)
     return xs, ys
 
 def feature_list(filename):
