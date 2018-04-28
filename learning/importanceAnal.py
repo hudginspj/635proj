@@ -37,12 +37,13 @@ selected = []
 for i in range(len(importances)):
     # print(importances[i])
     # condition = importances[i] > 0.0005 and len(features[i]) == 3
-    condition = importances[i] > 0.0008
+    condition = importances[i] > 0.0018
     # condition = importances[i] > 0.0009 and not features[i].startswith("[G1") and not features[i].startswith(" [G1") and not features[i].startswith("[G2")
     if condition:
         print(features[i], importances[i])
         selected.append(features[i])
 
+selected = ["." + feat.strip("[]") + "." for feat in selected]
 print("|".join(selected))
 print("Selected count: ", len(selected))
 
