@@ -5,3 +5,5 @@ sequences/*
 training_data
 training_data/*
 features/*fa_feat*
+tmp
+tmp/*

@@ -9,6 +9,10 @@ import math
 import pickle
 import mcc
 import manualSelect
+import miscTools
+
+from imblearn.combine import SMOTEENN
+
 
 first = True
 
@@ -51,6 +55,35 @@ def gen_importances(filename):
     pickle.dump(importances,open('learning/save.p','wb'))
 
 
+def learnDrna(filename):
+    (xs, ys) = csvToExamples.xsAndYs(filename)
+
+    miscTools.summarize(ys)
+
+    for i in range(len(ys)):
+        if ys[i] != " DRNA":
+            ys[i] = "nonDRNA"
+    miscTools.summarize(ys)
+
+
+
+    xs = manualSelect.reduce(xs)
+
+    sm = SMOTEENN()
+    xs, ys = sm.fit_sample(xs, ys)
+
+    clf = ensemble.RandomForestClassifier()
+    #clf = ensemble.GradientBoostingClassifier()
+
+    print("Starting cross_validation...")
+    scores = cross_val_score(clf, xs, ys, cv=5, scoring=mcc.drnaMcc)
+    # scores = cross_val_score(clf, xs, ys, cv=5, scoring=None)
+    print(filename)
+    print(scores)
+    print(np.mean(scores))
+
+
+
 
 def learnOn(filename):
     (xs, ys) = csvToExamples.xsAndYs(filename)
@@ -82,5 +115,7 @@ if __name__ == "__main__":
     #learnOn('./training_data/pred-profeat.csv')
     #learnOn('./features/pred-nikki_features.csv')
     #learnOn('./features/pred-fa_feat_ProtrWeb.csv')
-    learnOn('./training_data/all_features.csv')
+    # learnOn('./training_data/all_features.csv')
     #gen_importances('./training_data/all_features.csv')
+    gen_importances('./training_data/pred-profeat.csv')
+    #learnDrna('./training_data/all_features.csv')

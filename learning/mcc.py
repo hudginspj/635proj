@@ -39,11 +39,18 @@ def calc_class_mcc(ys, pred, cla):
             fp += 1
         elif ys[i] == cla and pred[i] != cla:
             fn += 1
+    print(cla, " tptnfpfn: ", tp, tn, fp, fn)
     return calc_mcc(tp, tn, fp, fn)
 
 def calc_avg_mcc(mccdna, mccrna, mccdrna, mccnon):
     return (mccdna + mccrna + mccdrna + mccnon)/4
 
+def drnaMcc(clf, xs, ys):
+    pred = clf.predict(xs)
+    print("finished prediction")
+    drna_mcc = calc_class_mcc(ys, pred, " DRNA")
+    print("drna mcc: ", drna_mcc)
+    return drna_mcc
 
 def avgMcc(clf, xs, ys):
     pred = clf.predict(xs)
