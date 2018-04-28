@@ -2,7 +2,7 @@
   <PerformanceVector id="1" serialization="custom">
     <com.rapidminer.operator.AbstractIOObject>
       <default>
-        <source>Performance (4)</source>
+        <source>Performance (2)</source>
       </default>
     </com.rapidminer.operator.AbstractIOObject>
     <com.rapidminer.operator.ResultObjectAdapter>
@@ -26,13 +26,13 @@
             <com.rapidminer.tools.math.Averagable>
               <default>
                 <averageCount>5</averageCount>
-                <meanSquaredSum>0.8338367483265006</meanSquaredSum>
-                <meanSum>2.0352408775322623</meanSum>
+                <meanSquaredSum>2.983683421608598</meanSquaredSum>
+                <meanSum>3.862083731997405</meanSum>
               </default>
             </com.rapidminer.tools.math.Averagable>
             <kappa>
               <default>
-                <type>2</type>
+                <type>0</type>
                 <classNameMap id="8">
                   <entry>
                     <string>DRNA</string>
@@ -59,28 +59,28 @@
                 </classNames>
                 <counter id="10">
                   <double-array id="11">
-                    <double>34.0</double>
-                    <double>28.0</double>
-                    <double>0.0</double>
-                    <double>329.0</double>
+                    <double>199.0</double>
+                    <double>76.0</double>
+                    <double>3.0</double>
+                    <double>113.0</double>
                   </double-array>
                   <double-array id="12">
-                    <double>7.0</double>
-                    <double>232.0</double>
-                    <double>0.0</double>
-                    <double>284.0</double>
+                    <double>88.0</double>
+                    <double>324.0</double>
+                    <double>3.0</double>
+                    <double>108.0</double>
                   </double-array>
                   <double-array id="13">
-                    <double>0.0</double>
-                    <double>0.0</double>
-                    <double>0.0</double>
-                    <double>22.0</double>
+                    <double>7.0</double>
+                    <double>3.0</double>
+                    <double>4.0</double>
+                    <double>8.0</double>
                   </double-array>
                   <double-array id="14">
-                    <double>17.0</double>
-                    <double>45.0</double>
-                    <double>0.0</double>
-                    <double>7355.0</double>
+                    <double>988.0</double>
+                    <double>442.0</double>
+                    <double>62.0</double>
+                    <double>5925.0</double>
                   </double-array>
                 </counter>
                 <labelAttribute class="PolynominalAttribute" id="15" serialization="custom">
@@ -99,20 +99,26 @@
                       <constructionDescription>class</constructionDescription>
                       <statistics class="linked-list" id="19">
                         <NominalStatistics id="20">
-                          <mode>-1</mode>
-                          <maxCounter>0</maxCounter>
+                          <mode>3</mode>
+                          <maxCounter>7417</maxCounter>
+                          <scores id="21">
+                            <long>391</long>
+                            <long>523</long>
+                            <long>22</long>
+                            <long>7417</long>
+                          </scores>
                         </NominalStatistics>
-                        <UnknownStatistics id="21">
+                        <UnknownStatistics id="22">
                           <unknownCounter>0</unknownCounter>
                         </UnknownStatistics>
                       </statistics>
-                      <transformations id="22"/>
+                      <transformations id="23"/>
                     </default>
                   </com.rapidminer.example.table.AbstractAttribute>
                   <PolynominalAttribute>
                     <default>
-                      <nominalMapping class="PolynominalMapping" id="23">
-                        <symbolToIndexMap class="linked-hash-map" id="24">
+                      <nominalMapping class="PolynominalMapping" id="24">
+                        <symbolToIndexMap class="linked-hash-map" id="25">
                           <entry>
                             <string>DNA</string>
                             <int>0</int>
@@ -130,7 +136,7 @@
                             <int>3</int>
                           </entry>
                         </symbolToIndexMap>
-                        <indexToSymbolMap id="25">
+                        <indexToSymbolMap id="26">
                           <string>DNA</string>
                           <string>RNA</string>
                           <string>DRNA</string>
@@ -140,36 +146,42 @@
                     </default>
                   </PolynominalAttribute>
                 </labelAttribute>
-                <predictedLabelAttribute class="PolynominalAttribute" id="26" serialization="custom">
+                <predictedLabelAttribute class="PolynominalAttribute" id="27" serialization="custom">
                   <com.rapidminer.example.table.AbstractAttribute>
                     <default>
-                      <annotations id="27">
-                        <keyValueMap id="28"/>
+                      <annotations id="28">
+                        <keyValueMap id="29"/>
                       </annotations>
-                      <attributeDescription id="29">
+                      <attributeDescription id="30">
                         <name>prediction(class)</name>
                         <valueType>7</valueType>
                         <blockType>1</blockType>
                         <defaultValue>0.0</defaultValue>
-                        <index>76</index>
+                        <index>77</index>
                       </attributeDescription>
                       <constructionDescription>prediction(class)</constructionDescription>
-                      <statistics class="linked-list" id="30">
-                        <NominalStatistics id="31">
-                          <mode>-1</mode>
-                          <maxCounter>0</maxCounter>
+                      <statistics class="linked-list" id="31">
+                        <NominalStatistics id="32">
+                          <mode>3</mode>
+                          <maxCounter>7417</maxCounter>
+                          <scores id="33">
+                            <long>391</long>
+                            <long>523</long>
+                            <long>22</long>
+                            <long>7417</long>
+                          </scores>
                         </NominalStatistics>
-                        <UnknownStatistics id="32">
+                        <UnknownStatistics id="34">
                           <unknownCounter>0</unknownCounter>
                         </UnknownStatistics>
                       </statistics>
-                      <transformations id="33"/>
+                      <transformations id="35"/>
                     </default>
                   </com.rapidminer.example.table.AbstractAttribute>
                   <PolynominalAttribute>
                     <default>
-                      <nominalMapping class="PolynominalMapping" id="34">
-                        <symbolToIndexMap class="linked-hash-map" id="35">
+                      <nominalMapping class="PolynominalMapping" id="36">
+                        <symbolToIndexMap class="linked-hash-map" id="37">
                           <entry>
                             <string>DNA</string>
                             <int>0</int>
@@ -187,7 +199,7 @@
                             <int>3</int>
                           </entry>
                         </symbolToIndexMap>
-                        <indexToSymbolMap id="36">
+                        <indexToSymbolMap id="38">
                           <string>DNA</string>
                           <string>RNA</string>
                           <string>DRNA</string>
@@ -200,19 +212,95 @@
               </default>
             </kappa>
           </kappa>
+          <kappa id="39" serialization="custom">
+            <com.rapidminer.operator.ResultObjectAdapter>
+              <default>
+                <annotations id="40">
+                  <keyValueMap id="41"/>
+                </annotations>
+              </default>
+            </com.rapidminer.operator.ResultObjectAdapter>
+            <com.rapidminer.tools.math.Averagable>
+              <default>
+                <averageCount>5</averageCount>
+                <meanSquaredSum>0.4989134190173808</meanSquaredSum>
+                <meanSum>1.5758170414243144</meanSum>
+              </default>
+            </com.rapidminer.tools.math.Averagable>
+            <kappa>
+              <default>
+                <type>2</type>
+                <classNameMap id="42">
+                  <entry>
+                    <string>DRNA</string>
+                    <int>2</int>
+                  </entry>
+                  <entry>
+                    <string>RNA</string>
+                    <int>1</int>
+                  </entry>
+                  <entry>
+                    <string>DNA</string>
+                    <int>0</int>
+                  </entry>
+                  <entry>
+                    <string>nonDRNA</string>
+                    <int>3</int>
+                  </entry>
+                </classNameMap>
+                <classNames id="43">
+                  <string>DNA</string>
+                  <string>RNA</string>
+                  <string>DRNA</string>
+                  <string>nonDRNA</string>
+                </classNames>
+                <counter id="44">
+                  <double-array id="45">
+                    <double>199.0</double>
+                    <double>76.0</double>
+                    <double>3.0</double>
+                    <double>113.0</double>
+                  </double-array>
+                  <double-array id="46">
+                    <double>88.0</double>
+                    <double>324.0</double>
+                    <double>3.0</double>
+                    <double>108.0</double>
+                  </double-array>
+                  <double-array id="47">
+                    <double>7.0</double>
+                    <double>3.0</double>
+                    <double>4.0</double>
+                    <double>8.0</double>
+                  </double-array>
+                  <double-array id="48">
+                    <double>988.0</double>
+                    <double>442.0</double>
+                    <double>62.0</double>
+                    <double>5925.0</double>
+                  </double-array>
+                </counter>
+                <labelAttribute class="PolynominalAttribute" reference="15"/>
+                <predictedLabelAttribute class="PolynominalAttribute" reference="27"/>
+              </default>
+            </kappa>
+          </kappa>
         </averagesList>
       </default>
     </AverageVector>
     <PerformanceVector>
       <default>
-        <comparator class="com.rapidminer.operator.performance.PerformanceVector$DefaultComparator" id="37"/>
-        <currentValues id="38">
+        <comparator class="com.rapidminer.operator.performance.PerformanceVector$DefaultComparator" id="49"/>
+        <currentValues id="50">
+          <entry>
+            <string>accuracy</string>
+            <double>0.772416746399481</double>
+          </entry>
           <entry>
             <string>kappa</string>
-            <double>0.40704817550645245</double>
+            <double>0.3151634082848629</double>
           </entry>
         </currentValues>
-        <mainCriterion>kappa</mainCriterion>
       </default>
     </PerformanceVector>
   </PerformanceVector>

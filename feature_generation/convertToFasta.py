@@ -1,6 +1,6 @@
 import textwrap
 
-PROTEINS_PER_FILE = 100
+PROTEINS_PER_FILE = 1000
 
 TRAIN_OR_TEST = "training"
 
