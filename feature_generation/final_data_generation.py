@@ -1,7 +1,7 @@
 from os import listdir, path
 import csv
 
-TRAIN_OR_TEST = "training"
+TRAIN_OR_TEST = "test"
 
 def gen_data():
     classes = read_classes()
@@ -16,7 +16,7 @@ def gen_data():
         out_file.write(','.join(nikki_features))
         out_file.write(',class\n')
         # for seq in fatima_rows.keys():
-        for i in range(len(classes)):
+        for i in range(len(classes)-1):
             seq = f'seq{i+1}'
             # out_file.write(','.join(fatima_rows[seq]))
             # out_file.write(',')
@@ -42,6 +42,7 @@ def read_classes():
 
 
 def read_features(files_path):
+    old_feats = None
     feature_names = []
     rows = {}
 
@@ -56,13 +57,14 @@ def read_features(files_path):
         print("Loading %s " % tk_path)
     
         first = True
+        second = True
 
         num_features = -1
         with open(tk_path, 'r', encoding='utf-8') as features:        
             features_lines = features.readlines()
             if (i == 0):  # We only print the header with the features when reading the first file.
                 feature_names = features_lines[0].strip().split(',')[1:]
-                
+                #num_features = len(feature_names)
                 #raise Exception()
                 #print(feature_names)
             
@@ -71,18 +73,23 @@ def read_features(files_path):
                 feats = feats.split(',')
                 new_feats = feats[1:]
 
+                if not first and second and fileName == "seq-46260.out":
+                    second = False
+                    num_features = len(new_feats)
+
                 if first:
                     first = False
-                    num_features = len(new_feats)
-                # if feats[0].strip('"') == "seq5595":
-                #     print(fileName, j, new_feats, end="\n--------\n\n\n")
+                    if fileName != "seq-46260.out":
+                        num_features = len(new_feats)
+                
+           
                 if len(new_feats) == num_features:
                     rows[feats[0].strip('"')] = new_feats
                     old_feats = new_feats
                    
                 else:
                     rows[feats[0].strip('"')] = old_feats
-                    print("!!!!malformed_row", j, len(new_feats), num_features)
+                    print("!!!!malformed_row", j, len(new_feats), num_features, fileName)
                     
 
                 #print(feats[0:2])

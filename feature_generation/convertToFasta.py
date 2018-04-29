@@ -2,10 +2,10 @@ import textwrap
 
 PROTEINS_PER_FILE = 1000
 
-TRAIN_OR_TEST = "training"
+TRAIN_OR_TEST = "test"
 
 def open_segment_file(num, start):
-    filename = f"./sequences/{TRAIN_OR_TEST}_num_{num}_start_{start}.fasta"
+    filename = f"./sequences/a_{TRAIN_OR_TEST}_num_{num}_start_{start}.fasta"
     segment_file = open(filename, 'w')
     return segment_file
     
