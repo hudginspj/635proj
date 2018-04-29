@@ -27,9 +27,9 @@ importances = pickle.load(file)
 # close the file
 file.close()
 
-features = csvToExamples.feature_list('./features/pred-fa_feat_ProtrWeb.csv')
-features = csvToExamples.feature_list('./training_data/all_features.csv')
-features = csvToExamples.feature_list('./training_data/pred-profeat.csv')
+# features = csvToExamples.feature_list('./features/pred-fa_feat_ProtrWeb.csv')
+# features = csvToExamples.feature_list('./training_data/all_features.csv')
+features = csvToExamples.feature_list('./training_data/training_all.csv')
 
 print(importances)
 

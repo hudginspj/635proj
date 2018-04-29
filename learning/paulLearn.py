@@ -116,6 +116,6 @@ if __name__ == "__main__":
     #learnOn('./features/pred-nikki_features.csv')
     #learnOn('./features/pred-fa_feat_ProtrWeb.csv')
     # learnOn('./training_data/all_features.csv')
-    gen_importances('./training_data/all_features.csv')
+    gen_importances('./training_data/training_all.csv')
     #gen_importances('./training_data/pred-profeat.csv')
     #learnDrna('./training_data/all_features.csv')

@@ -5,15 +5,15 @@ TRAIN_OR_TEST = "training"
 
 def gen_data():
     classes = read_classes()
-    fatima_features, fatima_rows = read_features(f"./features/{TRAIN_OR_TEST}_fatima")
+    #fatima_features, fatima_rows = read_features(f"./features/{TRAIN_OR_TEST}_fatima")
     paul_features, paul_rows = read_features(f"./features/{TRAIN_OR_TEST}_paul")
     nikki_features, nikki_rows = read_features(f"./training_data/{TRAIN_OR_TEST}_nikki")
     with open(f"./training_data/{TRAIN_OR_TEST}_all.csv", 'w') as out_file:
-        out_file.write(','.join(fatima_features))
-        out_file.write(',')
+        #out_file.write(','.join(fatima_features))
+        #out_file.write(',')
         out_file.write(','.join(paul_features))
-        out_file.write(','.join(nikki_features))
         out_file.write(',')
+        out_file.write(','.join(nikki_features))
         out_file.write(',class\n')
         # for seq in fatima_rows.keys():
         for i in range(len(classes)):
@@ -25,8 +25,8 @@ def gen_data():
             # except:
             #     print("couldn't load row for ", seq)
             out_file.write(paul_row)
-            out_file.write(','.join(nikki_rows[seq]))
             out_file.write(',')
+            out_file.write(','.join(nikki_rows[seq]))
             out_file.write(f',{classes[seq]}\n')
             
 
@@ -55,6 +55,8 @@ def read_features(files_path):
         tk_path = path.join(files_path, fileName)
         print("Loading %s " % tk_path)
     
+        first = True
+
         num_features = -1
         with open(tk_path, 'r', encoding='utf-8') as features:        
             features_lines = features.readlines()
@@ -69,12 +71,19 @@ def read_features(files_path):
                 feats = feats.split(',')
                 new_feats = feats[1:]
 
-                if len(new_feats) != num_features:
+                if first:
+                    first = False
+                    num_features = len(new_feats)
+                # if feats[0].strip('"') == "seq5595":
+                #     print(fileName, j, new_feats, end="\n--------\n\n\n")
+                if len(new_feats) == num_features:
                     rows[feats[0].strip('"')] = new_feats
                     old_feats = new_feats
+                   
                 else:
                     rows[feats[0].strip('"')] = old_feats
                     print("!!!!malformed_row", j, len(new_feats), num_features)
+                    
 
                 #print(feats[0:2])
     return feature_names, rows
