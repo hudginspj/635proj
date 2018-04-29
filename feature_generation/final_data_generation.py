@@ -55,16 +55,26 @@ def read_features(files_path):
         tk_path = path.join(files_path, fileName)
         print("Loading %s " % tk_path)
     
+        num_features = -1
         with open(tk_path, 'r', encoding='utf-8') as features:        
             features_lines = features.readlines()
             if (i == 0):  # We only print the header with the features when reading the first file.
                 feature_names = features_lines[0].strip().split(',')[1:]
+                
+                #raise Exception()
                 #print(feature_names)
             
             for j in range(1, len(features_lines)):
                 feats = features_lines[j].strip()
                 feats = feats.split(',')
-                rows[feats[0].strip('"')] = feats[1:]
+                new_feats = feats[1:]
+
+                if len(new_feats) != num_features:
+                    rows[feats[0].strip('"')] = new_feats
+                    old_feats = new_feats
+                else:
+                    rows[feats[0].strip('"')] = old_feats
+                    print("!!!!malformed_row", j, len(new_feats), num_features)
 
                 #print(feats[0:2])
     return feature_names, rows
